@@ -1,0 +1,8 @@
+Flask==1.0.2
+Keras==2.2.2
+Keras-Applications==1.0.4
+Keras-Preprocessing==1.0.2
+matplotlib==2.2.3
+pandas==0.23.4
+numpy==1.15.1
+tensorflow==1.10.1
