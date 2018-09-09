@@ -16,10 +16,10 @@ import pandas as pd
 dir_name = os.path.dirname(os.path.realpath(__file__))
 
 
-def predict(maxTemp, meanTemp, minTemp, snowOnGround, precipitation, rainFall, snowFall):
+def predict(maxTemp, meanTemp, minTemp, rainFall, snowFall):
     K.clear_session()
     model = load_model(os.path.join(dir_name, "models/latest.h5"))
-    return str(model.predict(np.array([[maxTemp, meanTemp, minTemp, snowOnGround, precipitation, rainFall, snowFall]]))[0][0].item())
+    return str(model.predict(np.array([[maxTemp, meanTemp, minTemp, rainFall, snowFall]]))[0][0].item())
 
 
 @app.route("/")
@@ -27,7 +27,7 @@ def call():
     print('test', request.args, request.query_string)
     return predict(request.args.get("maxTemp"),
                    request.args.get("meanTemp"), request.args.get("minTemp"),
-                   request.args.get("snowOnGround"), request.args.get("precipitation"), request.args.get("rainFall"), request.args.get("snowFall"))
+                   request.args.get("rainFall"), request.args.get("snowFall"))
 
 
 if __name__ == '__main__':
